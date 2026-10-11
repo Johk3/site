@@ -135,6 +135,12 @@ const btn = (label, href, rel) => {
 if (S.email) actions += btn(L.getInTouch || 'Get in touch', `mailto:${S.email}`);
 profileLinks.forEach((l) => { actions += btn(l.label, l.url, isHttp(l.url) ? 'me noopener' : ''); });
 
+const L2 = S.affiliationLogo;
+const affLogo = L2 && L2.src ? (() => {
+  const img = `<picture>${L2.srcDark ? `<source srcset="${esc(L2.srcDark)}" media="(prefers-color-scheme: dark)">` : ''}` +
+    `<img src="${esc(L2.src)}" alt="${esc(L2.alt || '')}" width="${L2.width}" height="${L2.height}"></picture>`;
+  return L2.url ? `<a class="aff-logo" href="${esc(L2.url)}" rel="noopener">${img}</a>` : `<span class="aff-logo">${img}</span>`;
+})() : '';
 const abstractHtml = (S.abstract || []).map((p) => `<p>${inline(p)}</p>`).join('\n') +
   (S.keywords && S.keywords.length ? `\n<p class="keys">${esc(S.keywordsLabel || 'Keywords')}: ${esc(S.keywords.join(', '))}</p>` : '') +
   (actions ? `\n<div class="actions">${actions}</div>` : '');
@@ -233,7 +239,7 @@ ${ogImage ? `<meta name="twitter:image" content="${esc(ogImage)}">\n<meta name="
 <div class="title" id="top">
 <h1>${esc(S.name)}</h1>
 ${S.subtitle ? `<p class="subtitle">${esc(S.subtitle)}</p>` : ''}
-${S.affiliation ? `<p class="affiliation">${esc(S.affiliation)}</p>` : ''}
+${S.affiliation ? `<p class="affiliation">${affLogo}<span>${esc(S.affiliation)}</span></p>` : ''}
 ${S.portrait ? `<img class="portrait" src="${esc(S.portrait)}" alt="${esc(S.portraitAlt || '')}" width="168" height="168" fetchpriority="high">` : ''}
 <div class="abstract">
 ${abstractHtml}

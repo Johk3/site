@@ -13,6 +13,8 @@ window.SITE = {
   name: "Johannes Leppäkorpi",
   subtitle: "Embedded software and on-device machine learning",
   affiliation: "MSc Computer & Embedded Systems Engineering, TU Delft",
+  // Shown next to the affiliation; srcDark is used in dark mode
+  affiliationLogo: { src: "assets/img/tu-delft.png", srcDark: "assets/img/tu-delft-dark.png", alt: "TU Delft", width: 271, height: 106, url: "https://www.tudelft.nl" },
 
   // Short bio shown under the title. One string per paragraph.
   abstract: [
@@ -83,7 +85,9 @@ window.SITE = {
             "Maintained GitHub Actions CI/CD pipelines with automated test suites and code quality checks, and wrote the system documentation.",
             "Gathered requirements from stakeholders and communicated technical decisions in an agile (Scrum) team."
           ],
-          url: "https://github.com/Johk3/OpenML-CDI"
+          url: "https://github.com/Johk3/OpenML-CDI",
+          diagram: "assets/img/openml-architecture.svg",
+          caption: "How a dataset upload moves through the platform. The dashed box is an external service."
         },
         {
           title: "Lead Developer and Systems Administrator, U.S. Ambassador's Entrepreneurial Challenge",
