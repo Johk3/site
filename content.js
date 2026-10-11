@@ -4,6 +4,7 @@
  * Inline formatting inside any text:
  *   [label](https://example.com)   a link
  *   *words*                        italics
+ *   \\*                             a literal asterisk
  *
  * Leave a field as "" (or delete it) and it simply does not show.
  */
@@ -15,13 +16,13 @@ window.SITE = {
 
   // Short bio shown under the title. One string per paragraph.
   abstract: [
-    "MSc student in Computer & Embedded Systems Engineering at TU Delft, with a BSc in Data Science & Artificial Intelligence from Leiden University. I work on embedded software and on-device machine learning, and I can deploy models, not just train them."
+    "MSc student in Computer & Embedded Systems Engineering at TU Delft (expected July 2028), with a BSc in Data Science and Artificial Intelligence from Leiden University (GPA 8.01/10, Honours). I build real-time, multithreaded and networked software in C++ and Python, and I work on embedded systems and on-device machine learning."
   ],
   keywordsLabel: "Keywords",
-  keywords: ["Embedded systems", "C", "C++", "Rust", "Python", "ESP32", "Machine learning"],
+  keywords: ["Embedded systems", "C++", "Python", "Rust", "Real-time systems", "Machine learning"],
 
   // Buttons under the bio. The first one with a URL is drawn as the main button.
-  email: "",                       // e.g. "you@example.com". Shows a "Get in touch" button.
+  email: "johkmr@gmail.com",       // shows a "Get in touch" button. Set to "" to hide.
   links: [
     { label: "GitHub", url: "https://github.com/Johk3" },
     { label: "LinkedIn", url: "" },   // paste your profile URL
@@ -44,18 +45,27 @@ window.SITE = {
       entries: [
         {
           title: "MSc Computer & Embedded Systems Engineering, TU Delft",
-          meta: "2026 to 2028 (expected)",
+          meta: "09/2026 to 07/2028 (expected)",
           place: "Delft, Netherlands",
-          text: "Software specialisation. Coursework: computer architecture, real-time systems, hardware/software interfacing."
+          text: "Focus on control theory, software engineering, hardware engineering and systems engineering.",
+          bullets: [
+            "Key courses: Real-Time Systems, Processor Design Project, Digital VLSI Systems on Chip, High-Performance and AI Architectures, Reconfigurable Computing Design, Embedded Computer Architecture 2, Hardware Dependability."
+          ]
         },
         {
-          title: "BSc Data Science & Artificial Intelligence, Leiden University",
-          meta: "2023 to 2026",
+          title: "BSc Data Science and Artificial Intelligence, Leiden University",
+          meta: "09/2023 to 07/2026",
           place: "Leiden, Netherlands",
-          text: "Honours Academy. Minor in applied mathematics (quantitative finance) at TU Delft.",
+          text: "GPA 8.01/10 (top 10%), Honours student. Focus on algorithm design, machine learning, reinforcement learning and scalable computation.",
           bullets: [
-            "Thesis, graded 9.0/10: *Multi-objective stochastic electric vehicle routing problem*"
+            "Key courses: Algorithms & Data Structures, Software Engineering (agile team project for an external client), Software Development (airline ticketing system with a full test suite and CI/CD lifecycle), Essentials of Computer Systems."
           ]
+        },
+        {
+          title: "Minor in Applied Mathematics (Finance), TU Delft",
+          meta: "09/2025 to 01/2026",
+          place: "Delft, Netherlands",
+          text: "Quantitative finance and mathematical modelling: mathematical finance (stochastics, Itô calculus, Brownian motion), time series, option valuation methods (Monte Carlo with variance reduction, finite difference methods) and risk management."
         }
       ]
     },
@@ -63,16 +73,27 @@ window.SITE = {
       title: "Experience",
       entries: [
         {
-          title: "Software Engineer Intern, OpenML",
-          meta: "",                 // add dates, e.g. "Summer 2025"
+          title: "Software Developer and Data Platform Engineer, OpenML",
+          meta: "From 02/2026",
           place: "Leiden, Netherlands",
-          text: "Open-source machine-learning platform.",
           bullets: [
-            "Initiated and shipped a dataset upload platform, deployed on Leiden University servers with AWS S3 storage integration.",
-            "Built a pipeline-style upload flow: malware scanning, automated quality checks, and a collaborative contributor and expert review process producing Croissant metadata for each dataset.",
-            "Designed the platform to serve 100+ concurrent users."
+            "Designed and implemented a high-throughput dataset upload interface in Python, built for 100+ concurrent users uploading datasets of 100 GB or more through chunked transfer, with a multithreaded design for throughput and stability under load.",
+            "Built backend data ingestion pipelines and validation logic, with automated quality checks and Croissant metadata for each dataset.",
+            "Benchmarked pipeline correctness and system performance across large datasets.",
+            "Maintained GitHub Actions CI/CD pipelines with automated test suites and code quality checks, and wrote the system documentation.",
+            "Gathered requirements from stakeholders and communicated technical decisions in an agile (Scrum) team."
           ],
           url: "https://github.com/Johk3/OpenML-CDI"
+        },
+        {
+          title: "Lead Developer and Systems Administrator, U.S. Ambassador's Entrepreneurial Challenge",
+          meta: "2019 to 2020",
+          place: "Helsinki, Finland",
+          bullets: [
+            "Designed and deployed a MERN stack web application that won first place nationally.",
+            "Architected a REST API connecting the frontend to a live ML inference backend.",
+            "Deployed on AWS inside a VPC with private subnets and security group containment, and managed all cloud infrastructure end to end."
+          ]
         }
       ]
     },
@@ -80,23 +101,32 @@ window.SITE = {
       title: "Projects",
       entries: [
         {
-          title: "ESP32 wireless news display",
-          meta: "C/C++, ESP32",
-          text: "A microcontroller-driven screen showing high-impact headlines, streamed over Wi-Fi from open-source news channels to an ESP32.",
-          image: "",                // e.g. "assets/img/news-display.jpg"
-          imageAlt: "",
-          caption: ""
+          title: "Stochastic multi-objective EV routing problem (bachelor thesis)",
+          meta: "2026, grade 9.0/10 (top 3%), published at ICCL2026",
+          text: "A simulation-based, two-stage stochastic multi-objective evolutionary algorithm framework with stochastic traffic, vehicle breakdown and battery depletion. It improves energy efficiency, time-window adherence and operational resilience over a deterministic baseline.",
+          url: "https://github.com/Johk3/MOS-EVRPTW-Data"
         },
         {
-          title: "physik, a physics engine",
-          meta: "C++",
-          text: "A physics engine written from scratch in C++.",
-          url: "https://github.com/Johk3/physik"
+          title: "High-performance N-body physics simulator",
+          meta: "2024, C++, OpenCL",
+          text: "A real-time simulator processing 100k+ objects at 60+ FPS, using CPU-to-GPU offloading via OpenCL, multithreading and spatial partitioning."
         },
         {
-          title: "MadoffAirlines, a flight ticketing platform",
-          meta: "Web",
-          text: "An online platform for booking and managing flight tickets.",
+          title: "XIAO ESP32S3 livestream platform",
+          meta: "2026, C++, ESP32-S3",
+          text: "Captures livestreamed footage on a XIAO ESP32S3 and saves all of it to the SD card.",
+          url: "https://github.com/Johk3/XIAO-ESP32S3-Sense-Livestream-Platform"
+        },
+        {
+          title: "auto-belt, Factorio belt auto-routing",
+          meta: "2026",
+          text: "Automatic belt routing for Factorio using hierarchical A\\* (HPA\\*).",
+          url: "https://github.com/Johk3/auto-belt"
+        },
+        {
+          title: "Flight search engine backend",
+          meta: "2023, TypeScript, PostgreSQL",
+          text: "A RESTful API with Express.js and TypeScript and database queries optimised through Prisma ORM on PostgreSQL. Containerised microservices with OAuth 2.0 and JWT authentication, and a full automated test suite with CI/CD.",
           url: "https://github.com/Johk3/MadoffAirlines"
         }
       ]
@@ -104,16 +134,20 @@ window.SITE = {
     {
       title: "Skills",
       table: [
-        ["Programming", "C, C++, Rust (working proficiency). Python (extensive experience). SQL."],
-        ["Embedded and ML", "ESP32 microcontrollers and Wi-Fi peripherals. ML model training and evaluation from the Data Science & AI BSc."]
+        ["Languages", "Python (professional), C++, Rust, C, TypeScript, SQL, Verilog."],
+        ["Data and ML", "Pandas, NumPy, scikit-learn, PyTorch, TensorFlow."],
+        ["Tools", "Docker, Linux, Git, AWS, GitHub Actions, OpenCL, PostgreSQL."],
+        ["Practices", "CI/CD, Scrum, test-driven development, multithreaded and network (TCP/IP) programming, system documentation."],
+        ["Quantitative", "Stochastic modelling, Monte Carlo simulation, finite difference methods, time series analysis."]
       ]
     },
     {
       title: "Awards and languages",
       bullets: [
-        "Winner, US Ambassador Entrepreneurial Challenge, Helsinki (2020).",
-        "Speaker, Oxford University debate tournament (2023). Adjudicator, Sciences Po Reims tournament (2024).",
-        "Languages: Finnish (native), English (fluent)."
+        "Honours student, Leiden University Honours Academy.",
+        "First place, U.S. Ambassador's Entrepreneurial Challenge, Helsinki (2019).",
+        "Speaker, Oxford University Debate Tournament (2023). Adjudicator, Sciences Po Reims Debate Tournament (2024).",
+        "Languages: Finnish (native), English (native)."
       ]
     }
   ],

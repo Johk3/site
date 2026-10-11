@@ -17,14 +17,15 @@
   // Minimal inline markup: [label](url) and *italic*. Built with DOM nodes, never innerHTML.
   function inline(parent, text) {
     var re = /\[([^\]]+)\]\(([^)\s]+)\)|\*([^*]+)\*/g, last = 0, m;
-    text = String(text || '');
+    text = String(text || '').replace(/\\\*/g, '\u0001');
+    var T = function (t) { return document.createTextNode(t.replace(/\u0001/g, '*')); };
     while ((m = re.exec(text))) {
-      if (m.index > last) parent.appendChild(document.createTextNode(text.slice(last, m.index)));
-      if (m[1]) parent.appendChild(el('a', { href: m[2], text: m[1] }));
-      else parent.appendChild(el('em', { text: m[3] }));
+      if (m.index > last) parent.appendChild(T(text.slice(last, m.index)));
+      if (m[1]) parent.appendChild(el('a', { href: m[2], text: m[1].replace(/\u0001/g, '*') }));
+      else parent.appendChild(el('em', { text: m[3].replace(/\u0001/g, '*') }));
       last = re.lastIndex;
     }
-    if (last < text.length) parent.appendChild(document.createTextNode(text.slice(last)));
+    if (last < text.length) parent.appendChild(T(text.slice(last)));
     return parent;
   }
   function node(tag, text, attrs) { return inline(el(tag, attrs), text); }

@@ -7,7 +7,7 @@ A static site made of plain HTML, CSS and JavaScript. No build step.
 All the text lives in [`content.js`](content.js). Change it, save, refresh the page.
 
 - Fields left as `""` are hidden (for example `email`, `LinkedIn`, an entry `image`).
-- In any text, `[label](https://example.com)` makes a link and `*words*` makes italics.
+- In any text, `[label](https://example.com)` makes a link and `*words*` makes italics (write `\\*` for a literal asterisk).
 - An entry with a `url` is numbered automatically and listed under References.
 - Add, remove or reorder sections by editing the `sections` array.
 
