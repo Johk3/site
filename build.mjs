@@ -63,6 +63,7 @@ const abs = (p) => (p ? (isHttp(p) ? p : siteUrl + p.replace(/^\//, '')) : '');
 const pageTitle = SEO.title || `${S.name} | ${S.subtitle}`;
 const description = SEO.description || clip(plain((S.abstract || [])[0] || S.subtitle || ''), 155);
 const ogImage = abs(SEO.ogImage);
+const ogAlt = `${S.name}, ${S.subtitle || ''}`;
 const today = new Date().toISOString().slice(0, 10);
 
 if (pageTitle.length > 60) console.warn(`warning: title is ${pageTitle.length} characters, search results cut it near 60`);
@@ -149,6 +150,17 @@ const person = {
   ...(SEO.alumniOf && SEO.alumniOf.length ? { alumniOf: orgs(SEO.alumniOf).map((o) => ({ ...o, '@type': 'CollegeOrUniversity' })) } : {}),
   ...(profileLinks.some((l) => isHttp(l.url)) ? { sameAs: profileLinks.filter((l) => isHttp(l.url)).map((l) => l.url) } : {})
 };
+const articles = (S.sections || []).flatMap((sec) => sec.entries || []).filter((e) => e.publication).map((e) => ({
+  '@type': 'ScholarlyArticle',
+  name: plain(e.title).replace(/\s*\([^)]*\)$/, ''),
+  ...(e.text ? { abstract: plain(e.text) } : {}),
+  author: { '@id': siteUrl + '#person' },
+  ...(e.publication.publisher ? { publisher: { '@type': 'Organization', name: e.publication.publisher } } : {}),
+  ...(e.publication.event ? { isPartOf: { '@type': 'Book', name: e.publication.event + ' proceedings' } } : {}),
+  ...(e.publication.date ? { datePublished: e.publication.date } : {}),
+  url: ((e.links || []).find((l) => l && l.url) || e).url,
+  ...(e.url ? { isBasedOn: e.url } : {})
+}));
 const jsonld = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -161,7 +173,8 @@ const jsonld = {
       dateModified: today,
       mainEntity: { '@id': siteUrl + '#person' }
     },
-    person
+    person,
+    ...articles
   ]
 };
 
@@ -195,11 +208,14 @@ ${SEO.googleVerification ? `<meta name="google-site-verification" content="${esc
 ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="${esc(S.name)}, ${esc(S.subtitle || '')}">
-` : ''}<meta name="twitter:card" content="${ogImage ? 'summary_large_image' : 'summary'}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="${esc(ogAlt)}">
+` : ''}<meta property="profile:first_name" content="${esc(S.name.split(' ')[0])}">
+<meta property="profile:last_name" content="${esc(S.name.split(' ').slice(1).join(' '))}">
+<meta name="twitter:card" content="${ogImage ? 'summary_large_image' : 'summary'}">
 <meta name="twitter:title" content="${esc(pageTitle)}">
 <meta name="twitter:description" content="${esc(description)}">
-${ogImage ? `<meta name="twitter:image" content="${esc(ogImage)}">\n` : ''}<link rel="preload" href="assets/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+${ogImage ? `<meta name="twitter:image" content="${esc(ogImage)}">\n<meta name="twitter:image:alt" content="${esc(ogAlt)}">\n` : ''}<link rel="preload" href="assets/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 <style>${css}</style>`)}
 </head>

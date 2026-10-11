@@ -25,12 +25,12 @@ window.SITE = {
   email: "johkmr@gmail.com",       // shows a "Get in touch" button. Set to "" to hide.
   links: [
     { label: "GitHub", url: "https://github.com/Johk3" },
-    { label: "LinkedIn", url: "" },   // paste your profile URL
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/johannes-lepp%C3%A4korpi/" },
     { label: "CV", url: "" }          // e.g. "assets/cv.pdf" after you add the file
   ],
 
   // Optional portrait, e.g. "assets/img/portrait.jpg". Leave "" for none.
-  portrait: "",
+  portrait: "assets/img/portrait.jpg",
   portraitAlt: "Portrait of Johannes Leppäkorpi",
 
   // Body sections, in order. Each section may have any of:
@@ -47,9 +47,9 @@ window.SITE = {
           title: "MSc Computer & Embedded Systems Engineering, TU Delft",
           meta: "09/2026 to 07/2028 (expected)",
           place: "Delft, Netherlands",
-          text: "Focus on control theory, software engineering, hardware engineering and systems engineering.",
+          text: "Focus on software engineering, hardware engineering and systems engineering.",
           bullets: [
-            "Key courses: Real-Time Systems, Processor Design Project, Digital VLSI Systems on Chip, High-Performance and AI Architectures, Reconfigurable Computing Design, Embedded Computer Architecture 2, Hardware Dependability."
+            "Key courses: Real-Time Systems, Processor Design Project, Computer Arithmetic, High-Performance and AI Architectures, Reconfigurable Computing Design, Hardware Dependability."
           ]
         },
         {
@@ -103,10 +103,12 @@ window.SITE = {
         {
           title: "Stochastic multi-objective EV routing problem (bachelor thesis)",
           meta: "2026, grade 9.0/10 (top 3%)",
-          text: "A simulation-based, two-stage stochastic multi-objective evolutionary algorithm framework with stochastic traffic, vehicle breakdown and battery depletion. It improves energy efficiency, time-window adherence and operational resilience over a deterministic baseline. Published at ICCL2026 by Springer ([paper](https://link.springer.com/book/9783032407313)).",
+          text: "A simulation-based, two-stage stochastic multi-objective evolutionary algorithm framework with stochastic traffic, vehicle breakdown and battery depletion. It improves energy efficiency, time-window adherence and operational resilience over a deterministic baseline. Published in the ICCL 2026 proceedings ([Springer, Lecture Notes in Computer Science](https://link.springer.com/book/9783032407313)).",
           url: "https://github.com/Johk3/MOS-EVRPTW-Data",
           refLabel: "Source data",                 // word before the link in References
-          links: [{ label: "Paper (Springer)", url: "https://link.springer.com/book/9783032407313" }]
+          links: [{ label: "Paper (Springer)", url: "https://link.springer.com/book/9783032407313" }],
+          // Marked up as a ScholarlyArticle in the structured data
+          publication: { publisher: "Springer", event: "ICCL 2026, 17th International Conference on Computational Logistics", date: "2026" }
         },
         {
           title: "High-performance N-body physics simulator",
@@ -116,13 +118,13 @@ window.SITE = {
         {
           title: "XIAO ESP32S3 livestream platform",
           meta: "2026, C++, ESP32-S3",
-          text: "Captures livestreamed footage on a XIAO ESP32S3 and saves all of it to the SD card.",
+          text: "A dashcam and web streamer for the XIAO ESP32S3 Sense, built on Seeed's camera example. It serves a 1600 x 1200 live stream while a background task records every frame to the SD card, sorted by NTP-synced date and hour. A Python companion watches for the card and converts new frames to MP4 with FFmpeg.",
           url: "https://github.com/Johk3/XIAO-ESP32S3-Sense-Livestream-Platform"
         },
         {
           title: "auto-belt, Factorio belt auto-routing",
-          meta: "2026",
-          text: "Automatic belt routing for Factorio using hierarchical A\\* (HPA\\*).",
+          meta: "2026, Lua",
+          text: "A Factorio 2.0 mod that routes a conveyor belt between two points with hierarchical A\\* (HPA\\*). It prefers fewer turns, crosses obstacles with underground belts and spreads the search and construction over game ticks under a fixed work budget, so long routes never stall the game.",
           url: "https://github.com/Johk3/auto-belt"
         },
         {
@@ -157,7 +159,7 @@ window.SITE = {
   // Search and sharing. Used by build.mjs for the <title>, description, canonical URL,
   // social cards and structured data.
   seo: {
-    siteUrl: "https://johk3.github.io/",   // change this if you add a custom domain
+    siteUrl: "https://johannesl.com/",
     title: "Johannes Leppäkorpi | Embedded Software and Machine Learning",   // keep under about 60 characters
     description: "MSc student in Computer & Embedded Systems Engineering at TU Delft. Embedded software, real-time systems and on-device machine learning.",   // keep under about 155
     ogImage: "assets/og.png",               // 1200 x 630 social preview image
@@ -172,7 +174,7 @@ window.SITE = {
   // Words used by the page itself
   labels: {
     skip: "Skip to content",
-    references: "References",
+    references: "Links",
     getInTouch: "Get in touch",
     sourceCode: "Source code"
   },

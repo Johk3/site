@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>Page not found | Johannes Leppäkorpi</title>
 <meta name="robots" content="noindex">
-<base href="https://johk3.github.io/">
+<base href="https://johannesl.com/">
 <style>@font-face {
 font-family: 'Chivo';
 font-style: normal;
@@ -117,8 +117,8 @@ text-wrap: balance;
 .portrait { display: block; width: 168px; height: 168px; object-fit: cover; border-radius: 50%; margin: 28px auto 0; border: 1px solid var(--hair); }
 .abstract {
 margin: 32px auto 0;
-max-width: 62ch;
-padding: 20px 24px;
+max-width: 68ch;
+padding: 20px 0;
 border-top: 2px solid var(--ink);
 border-bottom: 1px solid var(--hair);
 text-align: left;
@@ -142,14 +142,14 @@ transition: background .25s var(--ease), color .25s var(--ease), transform .25s 
 .btn:active { transform: scale(.98); }
 .btn.primary { background: var(--ink); color: var(--page); }
 .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--page); }
-.cols { margin-top: 44px; columns: 2; column-gap: 40px; text-align: left; hyphens: auto; }
-.cols section { break-inside: auto; }
+.cols, .refs { max-width: 68ch; margin-left: auto; margin-right: auto; }
+.cols { margin-top: 44px; text-align: left; }
 .cols h2 {
 font-family: var(--sans);
 font-size: 1.05rem;
 text-transform: uppercase;
 letter-spacing: .06em;
-margin: 28px 0 8px;
+margin: 40px 0 8px;
 break-after: avoid;
 text-align: left;
 }
@@ -178,7 +178,6 @@ th { font-family: var(--sans); font-size: .82rem; text-transform: uppercase; let
 .refs .n { font-family: var(--mono); color: var(--accent); }
 .foot { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--hair); color: var(--mute); font-family: var(--sans); font-size: .85rem; }
 @media (max-width: 720px) {
-.cols { columns: 1; hyphens: none; }
 .nav > a { display: none; }
 .nav { justify-content: flex-start; }
 .nav ul { gap: 8px 18px; justify-content: flex-start; }
@@ -200,7 +199,7 @@ a { color: inherit; }
 <main class="title" id="main">
 <h1>Page not found</h1>
 <p class="subtitle">There is nothing at this address.</p>
-<div class="abstract"><p><a href="https://johk3.github.io/">Go to the home page</a></p></div>
+<div class="abstract"><p><a href="https://johannesl.com/">Go to the home page</a></p></div>
 </main>
 </div>
 </body>
