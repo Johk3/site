@@ -34,7 +34,7 @@ window.SITE = {
   portraitAlt: "Portrait of Johannes Leppäkorpi",
 
   // Body sections, in order. Each section may have any of:
-  //   entries: [{ title, meta, place, text, bullets: [], url, refLabel, links: [{label, url}], image, imageAlt, caption }]
+  //   entries: [{ title, meta, place, text, bullets: [], url, refLabel, links: [{label, url}], image, imageSize: [w, h], imageAlt, caption }]
   //   table:   [["Label", "Value"], ...]
   //   bullets: ["...", "..."]
   //   text:    ["paragraph", "paragraph"]
@@ -112,8 +112,13 @@ window.SITE = {
         },
         {
           title: "High-performance N-body physics simulator",
-          meta: "2024, C++, OpenCL",
-          text: "A real-time simulator processing 100k+ objects at 60+ FPS, using CPU-to-GPU offloading via OpenCL, multithreading and spatial partitioning."
+          meta: "2024, C++, OpenGL, OpenCL",
+          text: "A real-time simulator processing 100k+ objects at 60+ FPS, using CPU-to-GPU offloading via OpenCL, a thread pool and a spatial grid for collision checks. Rendered with OpenGL and GLFW, with an ImGui control panel.",
+          url: "https://github.com/Johk3/physik",
+          image: "assets/img/physik.png",
+          imageSize: [536, 384],
+          imageAlt: "Hundreds of coloured bodies with motion trails orbiting and colliding with a large central mass",
+          caption: "Bodies falling into orbit around a massive object."
         },
         {
           title: "XIAO ESP32S3 livestream platform",

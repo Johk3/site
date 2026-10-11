@@ -95,7 +95,7 @@ const sections = (S.sections || []).map((sec) => {
     if (e.text) h += `<p>${inline(e.text)}</p>\n`;
     if (e.bullets && e.bullets.length) h += `<ul>${e.bullets.map((b) => `<li>${inline(b)}</li>`).join('')}</ul>\n`;
     if (e.image) {
-      h += `<figure><img src="${esc(e.image)}" alt="${esc(e.imageAlt || '')}" loading="lazy" decoding="async">` +
+      h += `<figure><img src="${esc(e.image)}" alt="${esc(e.imageAlt || '')}"${e.imageSize ? ` width="${e.imageSize[0]}" height="${e.imageSize[1]}"` : ''} loading="lazy" decoding="async">` +
            (e.caption ? `<figcaption>${esc(e.caption)}</figcaption>` : '') + `</figure>\n`;
     }
     h += `</article>\n`;

@@ -184,7 +184,7 @@ text-align: left;
 .cite { font-family: var(--mono); font-size: .8em; text-decoration: none; padding: 0 2px; margin-left: 4px; transition: background .2s; }
 .cite:hover, .cite:focus-visible { background: color-mix(in srgb, var(--accent) 20%, transparent); outline: none; }
 figure { break-inside: avoid; margin: 16px 0; }
-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--hair); }
+figure img { display: block; max-width: 100%; height: auto; border: 1px solid var(--hair); }
 figcaption { font-size: .88rem; color: var(--mute); margin-top: 6px; text-align: left; }
 figcaption b { color: var(--ink); font-family: var(--sans); }
 table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .94rem; break-inside: avoid; text-align: left; }
@@ -277,22 +277,23 @@ a { color: inherit; }
 <p>A simulation-based, two-stage stochastic multi-objective evolutionary algorithm framework with stochastic traffic, vehicle breakdown and battery depletion. It improves energy efficiency, time-window adherence and operational resilience over a deterministic baseline. Published in the ICCL 2026 proceedings (<a href="https://link.springer.com/book/9783032407313" rel="noopener">Springer, Lecture Notes in Computer Science</a>).</p>
 </article>
 <article>
-<h3>High-performance N-body physics simulator</h3>
-<p class="meta">2024, C++, OpenCL</p>
-<p>A real-time simulator processing 100k+ objects at 60+ FPS, using CPU-to-GPU offloading via OpenCL, multithreading and spatial partitioning.</p>
+<h3>High-performance N-body physics simulator <a class="cite" href="#ref-3" aria-label="Reference 3">[3]</a></h3>
+<p class="meta">2024, C++, OpenGL, OpenCL</p>
+<p>A real-time simulator processing 100k+ objects at 60+ FPS, using CPU-to-GPU offloading via OpenCL, a thread pool and a spatial grid for collision checks. Rendered with OpenGL and GLFW, with an ImGui control panel.</p>
+<figure><img src="assets/img/physik.png" alt="Hundreds of coloured bodies with motion trails orbiting and colliding with a large central mass" width="536" height="384" loading="lazy" decoding="async"><figcaption>Bodies falling into orbit around a massive object.</figcaption></figure>
 </article>
 <article>
-<h3>XIAO ESP32S3 livestream platform <a class="cite" href="#ref-3" aria-label="Reference 3">[3]</a></h3>
+<h3>XIAO ESP32S3 livestream platform <a class="cite" href="#ref-4" aria-label="Reference 4">[4]</a></h3>
 <p class="meta">2026, C++, ESP32-S3</p>
 <p>A dashcam and web streamer for the XIAO ESP32S3 Sense, built on Seeed&#39;s camera example. It serves a 1600 x 1200 live stream while a background task records every frame to the SD card, sorted by NTP-synced date and hour. A Python companion watches for the card and converts new frames to MP4 with FFmpeg.</p>
 </article>
 <article>
-<h3>auto-belt, Factorio belt auto-routing <a class="cite" href="#ref-4" aria-label="Reference 4">[4]</a></h3>
+<h3>auto-belt, Factorio belt auto-routing <a class="cite" href="#ref-5" aria-label="Reference 5">[5]</a></h3>
 <p class="meta">2026, Lua</p>
 <p>A Factorio 2.0 mod that routes a conveyor belt between two points with hierarchical A* (HPA*). It prefers fewer turns, crosses obstacles with underground belts and spreads the search and construction over game ticks under a fixed work budget, so long routes never stall the game.</p>
 </article>
 <article>
-<h3>Flight search engine backend <a class="cite" href="#ref-5" aria-label="Reference 5">[5]</a></h3>
+<h3>Flight search engine backend <a class="cite" href="#ref-6" aria-label="Reference 6">[6]</a></h3>
 <p class="meta">2023, TypeScript, PostgreSQL</p>
 <p>A RESTful API with Express.js and TypeScript and database queries optimised through Prisma ORM on PostgreSQL. Containerised microservices with OAuth 2.0 and JWT authentication, and a full automated test suite with CI/CD.</p>
 </article>
@@ -311,9 +312,10 @@ a { color: inherit; }
 <ol>
 <li id="ref-1"><span class="n">[1]</span><span>Johannes Leppäkorpi. Software Developer and Data Platform Engineer, OpenML. Source code: <a href="https://github.com/Johk3/OpenML-CDI" rel="noopener">github.com/Johk3/OpenML-CDI</a>.</span></li>
 <li id="ref-2"><span class="n">[2]</span><span>Johannes Leppäkorpi. Stochastic multi-objective EV routing problem (bachelor thesis). Source data: <a href="https://github.com/Johk3/MOS-EVRPTW-Data" rel="noopener">github.com/Johk3/MOS-EVRPTW-Data</a>. Paper (Springer): <a href="https://link.springer.com/book/9783032407313" rel="noopener">link.springer.com/book/9783032407313</a>.</span></li>
-<li id="ref-3"><span class="n">[3]</span><span>Johannes Leppäkorpi. XIAO ESP32S3 livestream platform. Source code: <a href="https://github.com/Johk3/XIAO-ESP32S3-Sense-Livestream-Platform" rel="noopener">github.com/Johk3/XIAO-ESP32S3-Sense-Livestream-Platform</a>.</span></li>
-<li id="ref-4"><span class="n">[4]</span><span>Johannes Leppäkorpi. auto-belt, Factorio belt auto-routing. Source code: <a href="https://github.com/Johk3/auto-belt" rel="noopener">github.com/Johk3/auto-belt</a>.</span></li>
-<li id="ref-5"><span class="n">[5]</span><span>Johannes Leppäkorpi. Flight search engine backend. Source code: <a href="https://github.com/Johk3/MadoffAirlines" rel="noopener">github.com/Johk3/MadoffAirlines</a>.</span></li>
+<li id="ref-3"><span class="n">[3]</span><span>Johannes Leppäkorpi. High-performance N-body physics simulator. Source code: <a href="https://github.com/Johk3/physik" rel="noopener">github.com/Johk3/physik</a>.</span></li>
+<li id="ref-4"><span class="n">[4]</span><span>Johannes Leppäkorpi. XIAO ESP32S3 livestream platform. Source code: <a href="https://github.com/Johk3/XIAO-ESP32S3-Sense-Livestream-Platform" rel="noopener">github.com/Johk3/XIAO-ESP32S3-Sense-Livestream-Platform</a>.</span></li>
+<li id="ref-5"><span class="n">[5]</span><span>Johannes Leppäkorpi. auto-belt, Factorio belt auto-routing. Source code: <a href="https://github.com/Johk3/auto-belt" rel="noopener">github.com/Johk3/auto-belt</a>.</span></li>
+<li id="ref-6"><span class="n">[6]</span><span>Johannes Leppäkorpi. Flight search engine backend. Source code: <a href="https://github.com/Johk3/MadoffAirlines" rel="noopener">github.com/Johk3/MadoffAirlines</a>.</span></li>
 </ol>
 </section>
 </main>

@@ -126,7 +126,7 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .cite:hover, .cite:focus-visible { background: color-mix(in srgb, var(--accent) 20%, transparent); outline: none; }
 
 figure { break-inside: avoid; margin: 16px 0; }
-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--hair); }
+figure img { display: block; max-width: 100%; height: auto; border: 1px solid var(--hair); }
 figcaption { font-size: .88rem; color: var(--mute); margin-top: 6px; text-align: left; }
 figcaption b { color: var(--ink); font-family: var(--sans); }
 
