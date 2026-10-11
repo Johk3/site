@@ -134,7 +134,11 @@ window.SITE = {
           title: "auto-belt, Factorio belt auto-routing",
           meta: "2026, Lua",
           text: "A Factorio 2.0 mod that routes a conveyor belt between two points with hierarchical A\\* (HPA\\*). It prefers fewer turns, crosses obstacles with underground belts and spreads the search and construction over game ticks under a fixed work budget, so long routes never stall the game.",
-          url: "https://github.com/Johk3/auto-belt"
+          url: "https://github.com/Johk3/auto-belt",
+          image: "assets/img/auto-belt.jpg",
+          imageSize: [1126, 411],
+          imageAlt: "Two Factorio screenshots of a lake. Left: a thin preview line runs around the top and right of the lake. Right: the same route placed as belt ghosts, crossing the inlet at the top underground.",
+          caption: "Left: route preview around a lake. Right: the placed belt, crossing the inlet at the top underground."
         },
         {
           title: "Flight search engine backend",
