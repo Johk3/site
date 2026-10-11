@@ -154,7 +154,7 @@ const articles = (S.sections || []).flatMap((sec) => sec.entries || []).filter((
   '@type': 'ScholarlyArticle',
   name: plain(e.title).replace(/\s*\([^)]*\)$/, ''),
   ...(e.text ? { abstract: plain(e.text) } : {}),
-  author: { '@id': siteUrl + '#person' },
+  author: [{ '@id': siteUrl + '#person' }, ...(e.publication.coAuthors || []).map((name) => ({ '@type': 'Person', name }))],
   ...(e.publication.publisher ? { publisher: { '@type': 'Organization', name: e.publication.publisher } } : {}),
   ...(e.publication.event ? { isPartOf: { '@type': 'Book', name: e.publication.event + ' proceedings' } } : {}),
   ...(e.publication.date ? { datePublished: e.publication.date } : {}),

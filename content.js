@@ -101,14 +101,18 @@ window.SITE = {
       title: "Projects",
       entries: [
         {
-          title: "Stochastic multi-objective EV routing problem (bachelor thesis)",
-          meta: "2026, grade 9.0/10 (top 3%)",
-          text: "A simulation-based, two-stage stochastic multi-objective evolutionary algorithm framework with stochastic traffic, vehicle breakdown and battery depletion. It improves energy efficiency, time-window adherence and operational resilience over a deterministic baseline. Published in the ICCL 2026 proceedings ([Springer, Lecture Notes in Computer Science](https://link.springer.com/book/9783032407313)).",
+          title: "Multi-Objective Stochastic Electric Vehicle Routing with Time Windows (bachelor thesis)",
+          meta: "2026, Python, grade 9.0/10 (top 3%)",
+          text: "A simheuristic for routing electric delivery vehicles when traffic congestion, breakdowns and battery depletion can disrupt a plan, written with Yingjie Fan. Routes are evolved with NSGA-II and each candidate is scored by Monte Carlo simulation over sampled disruptions, using a physics-based energy model. On the rc101_21 benchmark instance, the knee point of the Pareto front used 26 to 73% less energy and 18 to 53% less recourse cost than a deterministic VRPy baseline as the instance grew from 10 to 100 customers. Time-window violations rose instead, by an amount that depends on customer geometry and disruption risk. Published in the ICCL 2026 proceedings ([Springer, Lecture Notes in Computer Science](https://link.springer.com/book/9783032407313)).",
           url: "https://github.com/Johk3/MOS-EVRPTW-Data",
           refLabel: "Source data",                 // word before the link in References
           links: [{ label: "Paper (Springer)", url: "https://link.springer.com/book/9783032407313" }],
+          image: "assets/img/thesis-pareto.png",
+          imageSize: [720, 745],
+          imageAlt: "3D scatter plot of energy, time-window penalty and resilience cost. The stochastic Pareto front lies below the deterministic baseline, marked with a cross.",
+          caption: "Pareto front for 100 customers (rc101_21) against the deterministic baseline, marked with a cross.",
           // Marked up as a ScholarlyArticle in the structured data
-          publication: { publisher: "Springer", event: "ICCL 2026, 17th International Conference on Computational Logistics", date: "2026" }
+          publication: { publisher: "Springer", event: "ICCL 2026, 17th International Conference on Computational Logistics", date: "2026", coAuthors: ["Yingjie Fan"] }
         },
         {
           title: "High-performance N-body physics simulator",
@@ -121,9 +125,9 @@ window.SITE = {
           caption: "Bodies falling into orbit around a massive object."
         },
         {
-          title: "XIAO ESP32S3 livestream platform",
-          meta: "2026, C++, ESP32-S3",
-          text: "A dashcam and web streamer for the XIAO ESP32S3 Sense, built on Seeed's camera example. It serves a 1600 x 1200 live stream while a background task records every frame to the SD card, sorted by NTP-synced date and hour. A Python companion watches for the card and converts new frames to MP4 with FFmpeg.",
+          title: "XIAO ESP32S3 Sense dashcam and live streamer",
+          meta: "2026, C++, FreeRTOS, Python",
+          text: "Firmware that turns the XIAO ESP32S3 Sense into an always-on dashcam, extending Seeed's camera web server example. The board serves a 1600 x 1200 live stream while a FreeRTOS task pinned to core 0, away from the web server, writes every frame to the SD card in NTP-timestamped hourly folders. Frame buffer count and JPEG quality are tuned so full-resolution capture fits in PSRAM without allocation failures. A Python companion recognises the card when it is plugged in, remembers which frames it has already processed and stitches each hour into an MP4 with FFmpeg.",
           url: "https://github.com/Johk3/XIAO-ESP32S3-Sense-Livestream-Platform"
         },
         {
