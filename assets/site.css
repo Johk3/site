@@ -144,7 +144,6 @@ th { font-family: var(--sans); font-size: .82rem; text-transform: uppercase; let
 .refs .n { font-family: var(--mono); color: var(--accent); }
 
 .foot { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--hair); color: var(--mute); font-family: var(--sans); font-size: .85rem; }
-.noscript { max-width: 640px; margin: 24px auto; padding: 0 16px; font-family: var(--sans); }
 
 @media (max-width: 720px) {
   .cols { columns: 1; hyphens: none; }

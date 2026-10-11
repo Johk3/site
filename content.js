@@ -152,6 +152,21 @@ window.SITE = {
     }
   ],
 
+  // Search and sharing. Used by build.mjs for the <title>, description, canonical URL,
+  // social cards and structured data.
+  seo: {
+    siteUrl: "https://johk3.github.io/",   // change this if you add a custom domain
+    title: "Johannes Leppäkorpi | Embedded Software and Machine Learning",   // keep under about 60 characters
+    description: "MSc student in Computer & Embedded Systems Engineering at TU Delft. Embedded software, real-time systems and on-device machine learning.",   // keep under about 155
+    ogImage: "assets/og.png",               // 1200 x 630 social preview image
+    locale: "en",
+    googleVerification: "",                 // token from Google Search Console, if you use it
+    alternateNames: ["Johannes Leppakorpi"], // spellings people may type without the umlaut
+    jobTitle: "MSc student, Computer & Embedded Systems Engineering",
+    affiliation: [{ name: "TU Delft", url: "https://www.tudelft.nl" }],
+    alumniOf: [{ name: "Leiden University", url: "https://www.universiteitleiden.nl" }]
+  },
+
   // Words used by the page itself
   labels: {
     skip: "Skip to content",
