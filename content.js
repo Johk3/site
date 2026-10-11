@@ -183,7 +183,8 @@ window.SITE = {
     description: "MSc student in Computer & Embedded Systems Engineering at TU Delft. Embedded software, real-time systems and on-device machine learning.",   // keep under about 155
     ogImage: "assets/og.png",               // 1200 x 630 social preview image
     locale: "en",
-    googleVerification: "",                 // token from Google Search Console, if you use it
+    googleVerification: "",
+    redirects: ["/aboutme.html", "/projects.html"],   // pages from the previous site on this domain                 // token from Google Search Console, if you use it
     alternateNames: ["Johannes Leppakorpi"], // spellings people may type without the umlaut
     jobTitle: "MSc student, Computer & Embedded Systems Engineering",
     affiliation: [{ name: "TU Delft", url: "https://www.tudelft.nl" }],

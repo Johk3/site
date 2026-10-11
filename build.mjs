@@ -281,6 +281,22 @@ ${head(`
 </html>
 `);
 
+// Old addresses on this domain that should land on the home page
+(SEO.redirects || []).forEach((path) => {
+  write(path.replace(/^\//, ''), `<!doctype html>
+<html lang="${esc(SEO.locale || 'en')}">
+<head>
+<meta charset="utf-8">
+<title>${esc(S.name)}</title>
+<link rel="canonical" href="${esc(siteUrl)}">
+<meta name="robots" content="noindex, follow">
+<meta http-equiv="refresh" content="0; url=${esc(siteUrl)}">
+</head>
+<body><p><a href="${esc(siteUrl)}">${esc(S.name)}</a></p></body>
+</html>
+`);
+});
+
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
