@@ -289,7 +289,6 @@ ${head(`
 <meta charset="utf-8">
 <title>${esc(S.name)}</title>
 <link rel="canonical" href="${esc(siteUrl)}">
-<meta name="robots" content="noindex, follow">
 <meta http-equiv="refresh" content="0; url=${esc(siteUrl)}">
 </head>
 <body><p><a href="${esc(siteUrl)}">${esc(S.name)}</a></p></body>
