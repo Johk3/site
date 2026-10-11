@@ -112,8 +112,10 @@ if (refs.length) {
   nav.push(['references', L.references || 'References']);
   refsHtml = `<section class="refs" id="references">\n<h2>${esc(L.references || 'References')}</h2>\n<ol>\n` +
     refs.map((e, i) =>
-      `<li id="ref-${i + 1}"><span class="n">[${i + 1}]</span><span>${esc(S.name)}. ${esc(plain(e.title))}. ${esc(L.sourceCode || 'Source code')}: ` +
-      `<a href="${esc(e.url)}" rel="noopener">${esc(e.url.replace(/^https?:\/\//, ''))}</a></span></li>`).join('\n') +
+      `<li id="ref-${i + 1}"><span class="n">[${i + 1}]</span><span>${esc(S.name)}. ${esc(plain(e.title))}. ${esc(e.refLabel || L.sourceCode || 'Source code')}: ` +
+      `<a href="${esc(e.url)}" rel="noopener">${esc(e.url.replace(/^https?:\/\//, ''))}</a>.` +
+      (e.links || []).filter((l) => l && l.url).map((l) => ` ${esc(l.label)}: <a href="${esc(l.url)}" rel="noopener">${esc(l.url.replace(/^https?:\/\//, ''))}</a>.`).join('') +
+      `</span></li>`).join('\n') +
     `\n</ol>\n</section>\n`;
 }
 

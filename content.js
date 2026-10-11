@@ -34,7 +34,7 @@ window.SITE = {
   portraitAlt: "Portrait of Johannes Leppäkorpi",
 
   // Body sections, in order. Each section may have any of:
-  //   entries: [{ title, meta, place, text, bullets: [], url, image, imageAlt, caption }]
+  //   entries: [{ title, meta, place, text, bullets: [], url, refLabel, links: [{label, url}], image, imageAlt, caption }]
   //   table:   [["Label", "Value"], ...]
   //   bullets: ["...", "..."]
   //   text:    ["paragraph", "paragraph"]
@@ -102,9 +102,11 @@ window.SITE = {
       entries: [
         {
           title: "Stochastic multi-objective EV routing problem (bachelor thesis)",
-          meta: "2026, grade 9.0/10 (top 3%), published at ICCL2026",
-          text: "A simulation-based, two-stage stochastic multi-objective evolutionary algorithm framework with stochastic traffic, vehicle breakdown and battery depletion. It improves energy efficiency, time-window adherence and operational resilience over a deterministic baseline.",
-          url: "https://github.com/Johk3/MOS-EVRPTW-Data"
+          meta: "2026, grade 9.0/10 (top 3%)",
+          text: "A simulation-based, two-stage stochastic multi-objective evolutionary algorithm framework with stochastic traffic, vehicle breakdown and battery depletion. It improves energy efficiency, time-window adherence and operational resilience over a deterministic baseline. Published at ICCL2026 ([paper](https://link.springer.com/book/9783032407313)).",
+          url: "https://github.com/Johk3/MOS-EVRPTW-Data",
+          refLabel: "Source data",                 // word before the link in References
+          links: [{ label: "Paper", url: "https://link.springer.com/book/9783032407313" }]
         },
         {
           title: "High-performance N-body physics simulator",
