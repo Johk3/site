@@ -55,6 +55,7 @@ window.SITE = {
         },
         {
           title: "BSc Data Science and Artificial Intelligence, Leiden University",
+          logo: { src: "assets/img/leiden.png", srcDark: "assets/img/leiden-dark.png", alt: "Leiden University", width: 277, height: 118, displayHeight: 40, url: "https://www.universiteitleiden.nl" },
           meta: "09/2023 to 07/2026",
           place: "Leiden, Netherlands",
           text: "GPA 8.01/10 (top 10%), Honours student. Focus on algorithm design, machine learning, reinforcement learning and scalable computation.",

@@ -78,7 +78,7 @@ let n = 0;
 // Small logo beside an entry heading, with an optional dark-mode variant
 function logoHtml(l) {
   const img = `<picture>${l.srcDark ? `<source srcset="${esc(l.srcDark)}" media="(prefers-color-scheme: dark)">` : ''}` +
-    `<img src="${esc(l.src)}" alt="${esc(l.alt || '')}" width="${l.width}" height="${l.height}"></picture>`;
+    `<img src="${esc(l.src)}" alt="${esc(l.alt || '')}" width="${l.width}" height="${l.height}"${l.displayHeight ? ` style="height:${l.displayHeight}px"` : ''}></picture>`;
   return l.url ? `<a class="entry-logo" href="${esc(l.url)}" rel="noopener">${img}</a>` : `<span class="entry-logo">${img}</span>`;
 }
 
