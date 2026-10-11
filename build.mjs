@@ -75,6 +75,13 @@ const refs = [];
 const nav = [];
 let n = 0;
 
+// Small logo beside an entry heading, with an optional dark-mode variant
+function logoHtml(l) {
+  const img = `<picture>${l.srcDark ? `<source srcset="${esc(l.srcDark)}" media="(prefers-color-scheme: dark)">` : ''}` +
+    `<img src="${esc(l.src)}" alt="${esc(l.alt || '')}" width="${l.width}" height="${l.height}"></picture>`;
+  return l.url ? `<a class="entry-logo" href="${esc(l.url)}" rel="noopener">${img}</a>` : `<span class="entry-logo">${img}</span>`;
+}
+
 const sections = (S.sections || []).map((sec) => {
   n += 1;
   const id = slug(sec.title);
@@ -89,7 +96,7 @@ const sections = (S.sections || []).map((sec) => {
       refs.push(e);
       cite = ` <a class="cite" href="#ref-${refs.length}" aria-label="Reference ${refs.length}">[${refs.length}]</a>`;
     }
-    h += `<article>\n<h3>${inline(e.title)}${cite}</h3>\n`;
+    h += `<article>\n${e.logo && e.logo.src ? logoHtml(e.logo) : ''}<h3>${inline(e.title)}${cite}</h3>\n`;
     const meta = [e.meta, e.place].filter(Boolean).join(', ');
     if (meta) h += `<p class="meta">${esc(meta)}</p>\n`;
     if (e.text) h += `<p>${inline(e.text)}</p>\n`;
@@ -135,12 +142,6 @@ const btn = (label, href, rel) => {
 if (S.email) actions += btn(L.getInTouch || 'Get in touch', `mailto:${S.email}`);
 profileLinks.forEach((l) => { actions += btn(l.label, l.url, isHttp(l.url) ? 'me noopener' : ''); });
 
-const L2 = S.affiliationLogo;
-const affLogo = L2 && L2.src ? (() => {
-  const img = `<picture>${L2.srcDark ? `<source srcset="${esc(L2.srcDark)}" media="(prefers-color-scheme: dark)">` : ''}` +
-    `<img src="${esc(L2.src)}" alt="${esc(L2.alt || '')}" width="${L2.width}" height="${L2.height}"></picture>`;
-  return L2.url ? `<a class="aff-logo" href="${esc(L2.url)}" rel="noopener">${img}</a>` : `<span class="aff-logo">${img}</span>`;
-})() : '';
 const abstractHtml = (S.abstract || []).map((p) => `<p>${inline(p)}</p>`).join('\n') +
   (S.keywords && S.keywords.length ? `\n<p class="keys">${esc(S.keywordsLabel || 'Keywords')}: ${esc(S.keywords.join(', '))}</p>` : '') +
   (actions ? `\n<div class="actions">${actions}</div>` : '');
@@ -239,7 +240,7 @@ ${ogImage ? `<meta name="twitter:image" content="${esc(ogImage)}">\n<meta name="
 <div class="title" id="top">
 <h1>${esc(S.name)}</h1>
 ${S.subtitle ? `<p class="subtitle">${esc(S.subtitle)}</p>` : ''}
-${S.affiliation ? `<p class="affiliation">${affLogo}<span>${esc(S.affiliation)}</span></p>` : ''}
+${S.affiliation ? `<p class="affiliation">${esc(S.affiliation)}</p>` : ''}
 ${S.portrait ? `<img class="portrait" src="${esc(S.portrait)}" alt="${esc(S.portraitAlt || '')}" width="168" height="168" fetchpriority="high">` : ''}
 <div class="abstract">
 ${abstractHtml}

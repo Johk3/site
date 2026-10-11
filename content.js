@@ -13,8 +13,6 @@ window.SITE = {
   name: "Johannes Leppäkorpi",
   subtitle: "Embedded software and on-device machine learning",
   affiliation: "MSc Computer & Embedded Systems Engineering, TU Delft",
-  // Shown next to the affiliation; srcDark is used in dark mode
-  affiliationLogo: { src: "assets/img/tu-delft.png", srcDark: "assets/img/tu-delft-dark.png", alt: "TU Delft", width: 271, height: 106, url: "https://www.tudelft.nl" },
 
   // Short bio shown under the title. One string per paragraph.
   abstract: [
@@ -36,7 +34,7 @@ window.SITE = {
   portraitAlt: "Portrait of Johannes Leppäkorpi",
 
   // Body sections, in order. Each section may have any of:
-  //   entries: [{ title, meta, place, text, bullets: [], url, refLabel, links: [{label, url}], image, imageSize: [w, h], imageAlt, diagram, caption }]
+  //   entries: [{ title, meta, place, text, bullets: [], url, refLabel, links: [{label, url}], logo, image, imageSize: [w, h], imageAlt, diagram, caption }]
   //   table:   [["Label", "Value"], ...]
   //   bullets: ["...", "..."]
   //   text:    ["paragraph", "paragraph"]
@@ -47,6 +45,7 @@ window.SITE = {
       entries: [
         {
           title: "MSc Computer & Embedded Systems Engineering, TU Delft",
+          logo: { src: "assets/img/tu-delft.png", srcDark: "assets/img/tu-delft-dark.png", alt: "TU Delft", width: 271, height: 106, url: "https://www.tudelft.nl" },   // srcDark is used in dark mode
           meta: "09/2026 to 07/2028 (expected)",
           place: "Delft, Netherlands",
           text: "Focus on software engineering, hardware engineering and systems engineering.",
@@ -114,7 +113,7 @@ window.SITE = {
           image: "assets/img/thesis-pareto.png",
           imageSize: [720, 745],
           imageAlt: "3D scatter plot of energy, time-window penalty and resilience cost. The stochastic Pareto front lies below the deterministic baseline, marked with a cross.",
-          caption: "Pareto front for 100 customers (rc101_21) against the deterministic baseline, marked with a cross.",
+          caption: "Pareto front for 100 customers (rc101_21) against the deterministic baseline, marked with a cross. p_breakdown = 0.05 is the chance that a vehicle breaks down on any one leg of its route; sigma = 0.15 is the spread of the log-normal traffic slowdown applied to each leg's travel time; customers is the number of delivery stops; MC = 500 is the number of Monte Carlo disruption scenarios averaged to score each candidate plan.",
           // Marked up as a ScholarlyArticle in the structured data
           publication: { publisher: "Springer", event: "ICCL 2026, 17th International Conference on Computational Logistics", date: "2026", coAuthors: ["Yingjie Fan"] }
         },

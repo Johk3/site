@@ -135,9 +135,7 @@ letter-spacing: -.01em;
 text-wrap: balance;
 }
 .title .subtitle { margin-top: 14px; font-size: clamp(1.1rem, 2vw, 1.4rem); font-style: italic; color: var(--mute); text-wrap: balance; }
-.title .affiliation { margin-top: 14px; font-family: var(--sans); font-size: .95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
-.aff-logo { display: block; line-height: 0; }
-.aff-logo img { height: 34px; width: auto; }
+.title .affiliation { margin-top: 10px; font-family: var(--sans); font-size: .95rem; font-weight: 600; }
 .portrait { display: block; width: 168px; height: 168px; object-fit: cover; border-radius: 50%; margin: 28px auto 0; border: 1px solid var(--hair); }
 .abstract {
 margin: 32px auto 0;
@@ -201,6 +199,9 @@ figure img { display: block; max-width: 100%; height: auto; border: 1px solid va
 .dg-head { fill: var(--mute); }
 .dg-step { fill: var(--accent); }
 .diagram .dg-n { font-family: var(--sans); font-weight: 700; font-size: 11px; fill: var(--page); }
+.entry-logo { float: right; margin: 16px 0 6px 16px; line-height: 0; }
+.entry-logo img { height: 32px; width: auto; }
+article { display: flow-root; }
 figcaption { font-size: .88rem; color: var(--mute); margin-top: 6px; text-align: left; }
 figcaption b { color: var(--ink); font-family: var(--sans); }
 table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .94rem; break-inside: avoid; text-align: left; }
@@ -241,7 +242,7 @@ a { color: inherit; }
 <div class="title" id="top">
 <h1>Johannes Leppäkorpi</h1>
 <p class="subtitle">Embedded software and on-device machine learning</p>
-<p class="affiliation"><a class="aff-logo" href="https://www.tudelft.nl" rel="noopener"><picture><source srcset="assets/img/tu-delft-dark.png" media="(prefers-color-scheme: dark)"><img src="assets/img/tu-delft.png" alt="TU Delft" width="271" height="106"></picture></a><span>MSc Computer &amp; Embedded Systems Engineering, TU Delft</span></p>
+<p class="affiliation">MSc Computer &amp; Embedded Systems Engineering, TU Delft</p>
 <img class="portrait" src="assets/img/portrait.jpg" alt="Portrait of Johannes Leppäkorpi" width="168" height="168" fetchpriority="high">
 <div class="abstract">
 <p>MSc student in Computer &amp; Embedded Systems Engineering at TU Delft (expected July 2028), with a BSc in Data Science and Artificial Intelligence from Leiden University (GPA 8.01/10, Honours). I build real-time, multithreaded and networked software in C++ and Python, and I work on embedded systems and on-device machine learning.</p>
@@ -255,7 +256,7 @@ a { color: inherit; }
 <section id="education">
 <h2>1. Education</h2>
 <article>
-<h3>MSc Computer &amp; Embedded Systems Engineering, TU Delft</h3>
+<a class="entry-logo" href="https://www.tudelft.nl" rel="noopener"><picture><source srcset="assets/img/tu-delft-dark.png" media="(prefers-color-scheme: dark)"><img src="assets/img/tu-delft.png" alt="TU Delft" width="271" height="106"></picture></a><h3>MSc Computer &amp; Embedded Systems Engineering, TU Delft</h3>
 <p class="meta">09/2026 to 07/2028 (expected), Delft, Netherlands</p>
 <p>Focus on software engineering, hardware engineering and systems engineering.</p>
 <ul><li>Key courses: Real-Time Systems, Processor Design Project, Computer Arithmetic, High-Performance and AI Architectures, Reconfigurable Computing Design, Hardware Dependability.</li></ul>
@@ -362,7 +363,7 @@ a { color: inherit; }
 <h3>Multi-Objective Stochastic Electric Vehicle Routing with Time Windows (bachelor thesis) <a class="cite" href="#ref-2" aria-label="Reference 2">[2]</a></h3>
 <p class="meta">2026, Python, grade 9.0/10 (top 3%)</p>
 <p>A simheuristic for routing electric delivery vehicles when traffic congestion, breakdowns and battery depletion can disrupt a plan, written with Yingjie Fan. Routes are evolved with NSGA-II and each candidate is scored by Monte Carlo simulation over sampled disruptions, using a physics-based energy model. On the rc101_21 benchmark instance, the knee point of the Pareto front used 26 to 73% less energy and 18 to 53% less recourse cost than a deterministic VRPy baseline as the instance grew from 10 to 100 customers. Time-window violations rose instead, by an amount that depends on customer geometry and disruption risk. Published in the ICCL 2026 proceedings (<a href="https://link.springer.com/book/9783032407313" rel="noopener">Springer, Lecture Notes in Computer Science</a>).</p>
-<figure><img src="assets/img/thesis-pareto.png" alt="3D scatter plot of energy, time-window penalty and resilience cost. The stochastic Pareto front lies below the deterministic baseline, marked with a cross." width="720" height="745" loading="lazy" decoding="async"><figcaption>Pareto front for 100 customers (rc101_21) against the deterministic baseline, marked with a cross.</figcaption></figure>
+<figure><img src="assets/img/thesis-pareto.png" alt="3D scatter plot of energy, time-window penalty and resilience cost. The stochastic Pareto front lies below the deterministic baseline, marked with a cross." width="720" height="745" loading="lazy" decoding="async"><figcaption>Pareto front for 100 customers (rc101_21) against the deterministic baseline, marked with a cross. p_breakdown = 0.05 is the chance that a vehicle breaks down on any one leg of its route; sigma = 0.15 is the spread of the log-normal traffic slowdown applied to each leg&#39;s travel time; customers is the number of delivery stops; MC = 500 is the number of Monte Carlo disruption scenarios averaged to score each candidate plan.</figcaption></figure>
 </article>
 <article>
 <h3>High-performance N-body physics simulator <a class="cite" href="#ref-3" aria-label="Reference 3">[3]</a></h3>
