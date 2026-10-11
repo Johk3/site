@@ -185,6 +185,18 @@ text-align: left;
 .cite:hover, .cite:focus-visible { background: color-mix(in srgb, var(--accent) 20%, transparent); outline: none; }
 figure { break-inside: avoid; margin: 16px 0; }
 figure img { display: block; max-width: 100%; height: auto; border: 1px solid var(--hair); }
+.diagram svg { display: block; width: 100%; height: auto; }
+.diagram text { fill: var(--ink); }
+.dg-t { font-family: var(--sans); font-weight: 700; font-size: 15px; }
+.dg-c { font-family: var(--sans); font-size: 12.5px; }
+.dg-b { font-weight: 700; fill: var(--accent); }
+.diagram .dg-s { font-family: var(--mono); font-size: 11px; fill: var(--mute); }
+.dg-box { fill: var(--page); stroke: var(--ink); stroke-width: 1.5; }
+.dg-frame { fill: color-mix(in srgb, var(--accent) 6%, var(--page)); stroke: var(--ink); stroke-width: 1.5; }
+.dg-chip { fill: var(--page); stroke: var(--hair); stroke-width: 1.2; }
+.dg-ext { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.dg-line { stroke: var(--mute); stroke-width: 1.5; }
+.dg-head { fill: var(--mute); }
 figcaption { font-size: .88rem; color: var(--mute); margin-top: 6px; text-align: left; }
 figcaption b { color: var(--ink); font-family: var(--sans); }
 table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .94rem; break-inside: avoid; text-align: left; }
@@ -297,7 +309,63 @@ a { color: inherit; }
 <article>
 <h3>Flight search engine backend <a class="cite" href="#ref-6" aria-label="Reference 6">[6]</a></h3>
 <p class="meta">2023, TypeScript, PostgreSQL</p>
-<p>A RESTful API with Express.js and TypeScript and database queries optimised through Prisma ORM on PostgreSQL. Containerised microservices with OAuth 2.0 and JWT authentication, and a full automated test suite with CI/CD.</p>
+<p>The backend of a flight booking site. An Express and TypeScript REST API searches live offers through the Amadeus API, re-prices the chosen offer and stores bookings and passengers in PostgreSQL through Prisma. Users sign in with JWT access and refresh tokens over bcrypt-hashed passwords, and every request is validated with Joi and rate limited. The API and database run as Docker containers, with Jest unit and integration tests and CI/CD.</p>
+<figure class="diagram"><svg viewBox="0 0 600 470" role="img" aria-labelledby="madoff-title madoff-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="madoff-title">Architecture of the flight search engine</title>
+<desc id="madoff-desc">A Next.js web app calls an Express API over REST with a bearer token. Every request passes helmet, CORS, rate limiting, compression and logging, then Joi validation and, on protected routes, JWT authentication. The auth routes store users and refresh tokens in PostgreSQL through Prisma. The flight routes search and re-price offers through the external Amadeus API and save bookings and passengers in PostgreSQL.</desc>
+<defs>
+<marker id="madoff-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-head" d="M0 0L10 5L0 10z"/></marker>
+</defs>
+
+<rect class="dg-box" x="150" y="8" width="300" height="54"/>
+<text class="dg-t" x="300" y="30" text-anchor="middle">Web app</text>
+<text class="dg-s" x="300" y="49" text-anchor="middle">Next.js 14, React · search, login, booking</text>
+
+<line class="dg-line" x1="300" y1="62" x2="300" y2="100" marker-end="url(#madoff-arrow)"/>
+<text class="dg-s" x="310" y="86">REST + JSON, Bearer access token</text>
+
+<rect class="dg-frame" x="20" y="102" width="560" height="196"/>
+<text class="dg-t" x="36" y="126">Express API</text>
+<text class="dg-s" x="136" y="126">TypeScript · Docker container</text>
+
+<text class="dg-s" x="36" y="150">every request</text>
+<rect class="dg-chip" x="36" y="158" width="62" height="26"/><text class="dg-c" x="67" y="175" text-anchor="middle">helmet</text>
+<rect class="dg-chip" x="110" y="158" width="56" height="26"/><text class="dg-c" x="138" y="175" text-anchor="middle">CORS</text>
+<rect class="dg-chip" x="178" y="158" width="150" height="26"/><text class="dg-c" x="253" y="175" text-anchor="middle">rate limit 1000 / 15 min</text>
+<rect class="dg-chip" x="340" y="158" width="104" height="26"/><text class="dg-c" x="392" y="175" text-anchor="middle">compression</text>
+<rect class="dg-chip" x="456" y="158" width="108" height="26"/><text class="dg-c" x="510" y="175" text-anchor="middle">Winston logs</text>
+
+<text class="dg-s" x="36" y="206">per route</text>
+<rect class="dg-chip" x="36" y="214" width="120" height="26"/><text class="dg-c" x="96" y="231" text-anchor="middle">Joi validation</text>
+<line class="dg-line" x1="156" y1="227" x2="176" y2="227" marker-end="url(#madoff-arrow)"/>
+<rect class="dg-chip" x="178" y="214" width="196" height="26"/><text class="dg-c" x="276" y="231" text-anchor="middle">JWT auth (protected routes)</text>
+
+<rect class="dg-box" x="36" y="252" width="254" height="34"/>
+<text class="dg-c" x="48" y="274"><tspan class="dg-b">/auth</tspan><tspan dx="6">register</tspan><tspan> · login · refresh · logout</tspan></text>
+<rect class="dg-box" x="310" y="252" width="254" height="34"/>
+<text class="dg-c" x="322" y="274"><tspan class="dg-b">/flights</tspan><tspan dx="6">search</tspan><tspan> · book · cancel · pay</tspan></text>
+
+<line class="dg-line" x1="120" y1="286" x2="120" y2="350" marker-end="url(#madoff-arrow)"/>
+<text class="dg-s" x="128" y="318">users, bcrypt hashes,</text>
+<text class="dg-s" x="128" y="332">refresh tokens</text>
+<line class="dg-line" x1="360" y1="286" x2="250" y2="350" marker-end="url(#madoff-arrow)"/>
+<text class="dg-s" x="328" y="316">bookings</text>
+<line class="dg-line" x1="470" y1="286" x2="470" y2="350" marker-end="url(#madoff-arrow)"/>
+<text class="dg-s" x="478" y="318">search,</text>
+<text class="dg-s" x="478" y="332">re-price offer</text>
+
+<rect class="dg-box" x="36" y="352" width="254" height="104"/>
+<text class="dg-t" x="52" y="376">PostgreSQL 17</text>
+<text class="dg-s" x="52" y="395">Docker container, Prisma ORM</text>
+<text class="dg-c" x="52" y="420">User · RefreshToken</text>
+<text class="dg-c" x="52" y="440">Booking · Passenger</text>
+
+<rect class="dg-ext" x="310" y="352" width="254" height="104"/>
+<text class="dg-t" x="326" y="376">Amadeus API</text>
+<text class="dg-s" x="326" y="395">external · OAuth 2.0</text>
+<text class="dg-c" x="326" y="420">flight offers search</text>
+<text class="dg-c" x="326" y="440">offer price confirmation</text>
+</svg><figcaption>How a request moves through the system. The dashed box is an external service.</figcaption></figure>
 </article>
 </section>
 <section id="skills">

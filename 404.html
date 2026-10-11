@@ -163,6 +163,18 @@ text-align: left;
 .cite:hover, .cite:focus-visible { background: color-mix(in srgb, var(--accent) 20%, transparent); outline: none; }
 figure { break-inside: avoid; margin: 16px 0; }
 figure img { display: block; max-width: 100%; height: auto; border: 1px solid var(--hair); }
+.diagram svg { display: block; width: 100%; height: auto; }
+.diagram text { fill: var(--ink); }
+.dg-t { font-family: var(--sans); font-weight: 700; font-size: 15px; }
+.dg-c { font-family: var(--sans); font-size: 12.5px; }
+.dg-b { font-weight: 700; fill: var(--accent); }
+.diagram .dg-s { font-family: var(--mono); font-size: 11px; fill: var(--mute); }
+.dg-box { fill: var(--page); stroke: var(--ink); stroke-width: 1.5; }
+.dg-frame { fill: color-mix(in srgb, var(--accent) 6%, var(--page)); stroke: var(--ink); stroke-width: 1.5; }
+.dg-chip { fill: var(--page); stroke: var(--hair); stroke-width: 1.2; }
+.dg-ext { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.dg-line { stroke: var(--mute); stroke-width: 1.5; }
+.dg-head { fill: var(--mute); }
 figcaption { font-size: .88rem; color: var(--mute); margin-top: 6px; text-align: left; }
 figcaption b { color: var(--ink); font-family: var(--sans); }
 table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .94rem; break-inside: avoid; text-align: left; }

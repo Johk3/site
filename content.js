@@ -34,7 +34,7 @@ window.SITE = {
   portraitAlt: "Portrait of Johannes Leppäkorpi",
 
   // Body sections, in order. Each section may have any of:
-  //   entries: [{ title, meta, place, text, bullets: [], url, refLabel, links: [{label, url}], image, imageSize: [w, h], imageAlt, caption }]
+  //   entries: [{ title, meta, place, text, bullets: [], url, refLabel, links: [{label, url}], image, imageSize: [w, h], imageAlt, diagram, caption }]
   //   table:   [["Label", "Value"], ...]
   //   bullets: ["...", "..."]
   //   text:    ["paragraph", "paragraph"]
@@ -143,8 +143,10 @@ window.SITE = {
         {
           title: "Flight search engine backend",
           meta: "2023, TypeScript, PostgreSQL",
-          text: "A RESTful API with Express.js and TypeScript and database queries optimised through Prisma ORM on PostgreSQL. Containerised microservices with OAuth 2.0 and JWT authentication, and a full automated test suite with CI/CD.",
-          url: "https://github.com/Johk3/MadoffAirlines"
+          text: "The backend of a flight booking site. An Express and TypeScript REST API searches live offers through the Amadeus API, re-prices the chosen offer and stores bookings and passengers in PostgreSQL through Prisma. Users sign in with JWT access and refresh tokens over bcrypt-hashed passwords, and every request is validated with Joi and rate limited. The API and database run as Docker containers, with Jest unit and integration tests and CI/CD.",
+          url: "https://github.com/Johk3/MadoffAirlines",
+          diagram: "assets/img/madoff-architecture.svg",
+          caption: "How a request moves through the system. The dashed box is an external service."
         }
       ]
     },

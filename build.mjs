@@ -94,6 +94,11 @@ const sections = (S.sections || []).map((sec) => {
     if (meta) h += `<p class="meta">${esc(meta)}</p>\n`;
     if (e.text) h += `<p>${inline(e.text)}</p>\n`;
     if (e.bullets && e.bullets.length) h += `<ul>${e.bullets.map((b) => `<li>${inline(b)}</li>`).join('')}</ul>\n`;
+    if (e.diagram) {
+      // Inline SVG so it picks up the page fonts and colour scheme
+      h += `<figure class="diagram">${read(e.diagram).trim()}` +
+           (e.caption ? `<figcaption>${esc(e.caption)}</figcaption>` : '') + `</figure>\n`;
+    }
     if (e.image) {
       h += `<figure><img src="${esc(e.image)}" alt="${esc(e.imageAlt || '')}"${e.imageSize ? ` width="${e.imageSize[0]}" height="${e.imageSize[1]}"` : ''} loading="lazy" decoding="async">` +
            (e.caption ? `<figcaption>${esc(e.caption)}</figcaption>` : '') + `</figure>\n`;
